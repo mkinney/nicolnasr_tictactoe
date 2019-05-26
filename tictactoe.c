@@ -34,45 +34,43 @@ int board()
 int turn(int i)
 {
 
-    if(i % 2 == 0)
-      return 2;
-    else
-      return 1;
-    i++;
-
+  if (i % 2 == 0)
+    return 2;
+  else
+    return 1;
 }
 
 int win()
 {
 
-  if(num[1] == num[2] && num[2] == num[3])
+  if (num[1] == num[2] && num[2] == num[3])
     return 1;
   else
-  if(num[4] == num[5] && num[5] == num[6])
-    return 1;
-  else
-  if(num[7] == num[8] && num[8] == num[9])
-    return 1;
-  else
-  if(num[1] == num[4] && num[4] == num[7])
-    return 1;
-  else
-  if(num[2] == num[5] && num[5] == num[8])
-    return 1;
-  else
-  if(num[3] == num[6] && num[6] == num[9])
-    return 1;
-  else
-  if(num[1] == num[5] && num[5] == num[9])
-    return 1;
-  else
-  if(num[3] == num[5] && num[5] == num[7])
-    return 1;
-  else
-  if(num[1] != '1' && num[2] != '2' && num[3] != '3' && num[4] != '4' && num[5] != '5' && num[6] != '6' && num[7] != '7' && num[8] != '8' && num[9] != '9')
-    return 0;
-  else
-    return 2;
+    if (num[4] == num[5] && num[5] == num[6])
+      return 1;
+    else
+      if (num[7] == num[8] && num[8] == num[9])
+        return 1;
+      else
+        if (num[1] == num[4] && num[4] == num[7])
+          return 1;
+        else
+          if (num[2] == num[5] && num[5] == num[8])
+            return 1;
+          else
+            if (num[3] == num[6] && num[6] == num[9])
+              return 1;
+            else
+              if (num[1] == num[5] && num[5] == num[9])
+                return 1;
+              else
+                if (num[3] == num[5] && num[5] == num[7])
+                  return 1;
+                else
+                  if (num[1] != '1' && num[2] != '2' && num[3] != '3' && num[4] != '4' && num[5] != '5' && num[6] != '6' && num[7] != '7' && num[8] != '8' && num[9] != '9')
+                    return 0;
+                  else
+                    return 2;
 }
 
 int main()
@@ -87,58 +85,58 @@ int main()
       do
       {
         scanf("%d", &pos);
-      }while(pos <= 0 || pos > 9);
+      } while (pos <= 0 || pos > 9);
 
-      if(turn(i) == 1)
+      if (turn(i) == 1)
         eo = 'X';
       else
-        if(turn(i) == 2)
+        if (turn(i) == 2)
           eo = '0';
 
-    if(pos == 1 && num[1] == '1')
-      num[1] = eo;
-    else
-    if(pos == 2 && num[2] == '2')
-      num[2] = eo;
-    else
-    if(pos == 3 && num[3] == '3')
-      num[3] = eo;
-    else
-    if(pos == 4 && num[4] == '4')
-      num[4] = eo;
-    else
-    if(pos == 5 && num[5] == '5')
-      num[5] = eo;
-    else
-    if(pos == 6 && num[6] == '6')
-      num[6] = eo;
-    else
-    if(pos == 7 && num[7] == '7')
-      num[7] = eo;
-    else
-    if(pos == 8 && num[8] == '8')
-      num[8] = eo;
-    else
-    if(pos == 9 && num[9] == '9')
-      num[9] = eo;
-    else
-      {
-        printf("INVALID MOVE!!");
-        getchar();
-        i--;
-      }
+      if (pos == 1 && num[1] == '1')
+        num[1] = eo;
+      else
+        if (pos == 2 && num[2] == '2')
+          num[2] = eo;
+        else
+          if (pos == 3 && num[3] == '3')
+            num[3] = eo;
+          else
+            if (pos == 4 && num[4] == '4')
+              num[4] = eo;
+            else
+              if (pos == 5 && num[5] == '5')
+                num[5] = eo;
+              else
+                if (pos == 6 && num[6] == '6')
+                  num[6] = eo;
+                else
+                  if (pos == 7 && num[7] == '7')
+                    num[7] = eo;
+                  else
+                    if (pos == 8 && num[8] == '8')
+                      num[8] = eo;
+                    else
+                      if (pos == 9 && num[9] == '9')
+                        num[9] = eo;
+                      else
+                      {
+                        printf("INVALID MOVE!!");
+                        getchar();
+                        i--;
+                      }
 
       board();
       i++;
-      if(win() == 0 || win() == 1)
+      if (win() == 0 || win() == 1)
         break;
-    }while(win() != 0 || win() != 1);
-    board();
+    } while (win() != 0 || win() != 1);
+  board();
 
-    if(win() == 1)
-      printf("\tplayer %d won!!", turn(i-1));
-    else
-    if(win() == 0)
-      printf("\tDRAW!!");
-    getchar();
+  if (win() == 1)
+    printf("\tplayer %d won!!\n", turn(i-1));
+  else
+    if (win() == 0)
+      printf("\tDRAW!!\n");
+  getchar();
 }
