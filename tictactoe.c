@@ -235,6 +235,19 @@ static char * test_win() {
   num[7] = p2;
   mu_assert("win() on with player2 in diagonal from top right corner", win() == 1);
 
+  /* draw */
+  reset_board();
+  num[1] = p1;
+  num[2] = p2;
+  num[3] = p1;
+  num[4] = p2;
+  num[5] = p2;
+  num[6] = p1;
+  num[7] = p1;
+  num[8] = p1;
+  num[9] = p2;
+  mu_assert("win() when the board is full and no one wins (aka draw/tie)", win() == 0);
+
   /* reset the global num variable */
   memcpy(num, save_num, sizeof(num));
   return 0;
