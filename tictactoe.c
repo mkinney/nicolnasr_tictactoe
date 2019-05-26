@@ -4,7 +4,11 @@
 #include <conio.h>
 #endif
 
+#include "minunit.h"
+
 #include <stdlib.h>
+
+int tests_run = 0;
 
 char num[10] = {'0' , '1' , '2' , '3' , '4' , '5' , '6' , '7' , '8' , '9'};
 
@@ -73,8 +77,35 @@ int win()
                     return 2;
 }
 
+static char * test_turn() {
+  mu_assert("turn(0) should return 2", turn(0) == 2);
+  mu_assert("turn(1) should return 1", turn(1) == 1);
+  return 0;
+}
+
+static char * all_tests() {
+  mu_run_test(test_turn);
+  return 0;
+}
+
+
 int main()
 {
+
+  char *result = all_tests();
+  if (result != 0) {
+    printf("%s\n", result);
+  }
+  else {
+    printf("ALL TESTS PASSED\n");
+  }
+  printf("Tests run: %d\n", tests_run);
+
+  if (result != 0)
+  {
+    return(0);
+  }
+
   int pos, i = 1, a;
   char eo;
 
