@@ -1,12 +1,21 @@
 #include <stdio.h>
+
+#ifdef WINDOWS
 #include <conio.h>
+#endif
+
 #include <stdlib.h>
 
 char num[10] = {'0' , '1' , '2' , '3' , '4' , '5' , '6' , '7' , '8' , '9'};
 
 int board()
 {
+#ifdef WINDOWS
   system("cls");
+#else
+  system("clear");
+#endif
+
 
   printf("\tTIC TAC TOE GAME\n\n");
   printf("player1 is X \t    player2 is 0\n\n");
@@ -115,7 +124,7 @@ int main()
     else
       {
         printf("INVALID MOVE!!");
-        getch();
+        getchar();
         i--;
       }
 
@@ -131,5 +140,5 @@ int main()
     else
     if(win() == 0)
       printf("\tDRAW!!");
-    getch();
+    getchar();
 }
