@@ -272,8 +272,20 @@ int main()
     return(0);
   }
 
-  int pos, i = 1, a;
+  int pos, i = 1;
   char eo;
+  int winnner = 0;
+
+  /* Note: The number of max_moves is arbitrary and is only used
+   * to capture the moves made. Program will crash if someone keeps
+   * making invalid moves.
+   */
+  int max_moves = 100;
+  int move_count = 0;
+  char moves[max_moves];
+  for (int j = 0; j < max_moves; j++) {
+    moves[j] = 0;
+  }
 
   do
     {
@@ -282,6 +294,8 @@ int main()
       do
       {
         scanf("%d", &pos);
+        moves[move_count] = pos;
+        move_count++;
       } while (pos <= 0 || pos > 9);
 
       if (turn(i) == 1)
@@ -336,4 +350,14 @@ int main()
     if (win() == 0)
       printf("\tDRAW!!\n");
   getchar();
+
+  /* show the moves made (for help with integration test cases)*/
+  printf("Moves made:");
+  for (int j = 0; j < move_count; j++) {
+    printf("%d", moves[j]);
+  }
+  printf("\n");
+
+  /* the retval indicates the winner 0=tie, 1=player 1 won, and 2=player2 won */
+  return(turn(i-1));
 }
