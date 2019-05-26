@@ -20,13 +20,22 @@ int tests_run = 0;
 char num[10] = {'0' , '1' , '2' , '3' , '4' , '5' , '6' , '7' , '8' , '9'};
 
 /* p1 is player 1 piece */
-char p1 = 'X';
+const char p1 = 'X';
 /* p2 is player 2 piece */
-char p2 = '0';
+const char p2 = '0';
+
+void clear_screen() {
+#ifdef WINDOWS
+  system("cls");
+#else
+  system("clear");
+#endif
+}
 
 /* Print the board */
 void board()
 {
+  clear_screen();
   printf("\tTIC TAC TOE GAME\n\n");
   printf("player1 is X \t    player2 is 0\n\n");
 
@@ -238,28 +247,15 @@ static char * all_tests() {
   return 0;
 }
 
+
 /* Main function */
 int main()
 {
 
-#ifdef WINDOWS
-  system("cls");
-#else
-  system("clear");
-#endif
-
+  /* if we do not pass all tests, do not play the game */
   char *result = all_tests();
   if (result != 0) {
     printf("%s\n", result);
-  }
-  else {
-    printf("ALL TESTS PASSED\n");
-  }
-  printf("Tests run: %d\n", tests_run);
-
-  /* if we do not pass all tests, do not play the game */
-  if (result != 0)
-  {
     return(0);
   }
 
