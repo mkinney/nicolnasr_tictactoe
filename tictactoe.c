@@ -114,11 +114,11 @@ static char * test_reset_board() {
   mu_assert("num[2] should be '2'", num[2] == '2');
   mu_assert("num[3] should be '3'", num[3] == '3');
   mu_assert("num[4] should be '4'", num[4] == '4');
-  mu_assert("num[5] should be '5'", num[1] == '5');
+  mu_assert("num[5] should be '5'", num[5] == '5');
   mu_assert("num[6] should be '6'", num[6] == '6');
   mu_assert("num[7] should be '7'", num[7] == '7');
   mu_assert("num[8] should be '8'", num[8] == '8');
-  mu_assert("num[9] should be '9'", num[1] == '9');
+  mu_assert("num[9] should be '9'", num[9] == '9');
   return 0;
 }
 
@@ -255,6 +255,7 @@ static char * test_win() {
 
 /* Run all tests */
 static char * all_tests() {
+  mu_run_test(test_reset_board);
   mu_run_test(test_turn);
   mu_run_test(test_win);
   return 0;
@@ -274,7 +275,6 @@ int main()
 
   int pos, i = 1;
   char eo;
-  int winnner = 0;
 
   /* Note: The number of max_moves is arbitrary and is only used
    * to capture the moves made. Program will crash if someone keeps
